@@ -46,14 +46,9 @@ def open_terminal():
     pressandrelease('j')    
     release('ctrl')
 
-
 #get counter
 with open('counter.txt', 'r') as file:
     counter = file.read()
-
-
-print(counter)
-
 
 while True:
     time.sleep(0.05)
