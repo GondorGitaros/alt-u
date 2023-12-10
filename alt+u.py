@@ -62,7 +62,7 @@ while True:
         command4 = "code app.js "
         command6 = "cp style.css " + counter + "/style.css"
         open_terminal()
-        typethis("cd ..")
+        typethis("cd D:\Code\Git\Main\jslearn")
         time.sleep(0.5)
         typethis(command1)
         typethis(command2)
