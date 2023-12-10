@@ -2,6 +2,8 @@ import keyboard
 import time
 import pyperclip
 
+FOLDER_LOCATION = "D:\Code\Git\Main\jslearn"
+
 #increment counter by 1 and save it to counter.txt
 def addone():
     with open('counter.txt', 'r') as file:
@@ -59,7 +61,7 @@ while True:
         command4 = "cd " + counter
         command5 = "code app.js "
         open_terminal()
-        typethis("cd D:\Code\Git\Main\jslearn")
+        typethis("cd " + FOLDER_LOCATION)
         typethis(command1)
         typethis(command2)
         typethis(command3)
