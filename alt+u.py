@@ -1,5 +1,4 @@
 import keyboard
-import time
 import os
 import shutil
 import subprocess
@@ -17,17 +16,15 @@ def addone():
         file.truncate()
     return str(counter + 1)
 
-def main():
-    while True:
-        time.sleep(0.05)
-        if keyboard.is_pressed('alt + u'):
-            counter = addone()
-            path = os.path.join(FOLDER_LOCATION, counter)
-            JS_PATH = os.path.join(path, "app.js")
-            os.mkdir(path)        
-            shutil.copyfile(INDEX_HTML_PATH, os.path.join(path, "index.html"))
-            shutil.copyfile(STYLE_CSS_PATH, os.path.join(path, "style.css"))
-            subprocess.run(["code.cmd", JS_PATH], check=True)
+def on_alt_u():
+    counter = addone()
+    path = os.path.join(FOLDER_LOCATION, counter)
+    JS_PATH = os.path.join(path, "app.js")
+    os.mkdir(path)        
+    shutil.copyfile(INDEX_HTML_PATH, os.path.join(path, "index.html"))
+    shutil.copyfile(STYLE_CSS_PATH, os.path.join(path, "style.css"))
+    subprocess.run(["code.cmd", JS_PATH], check=True)
 
 if __name__ == "__main__":
-    main()
+    keyboard.add_hotkey('alt + u', on_alt_u)
+    keyboard.wait()
