@@ -9,29 +9,25 @@ COUNTER_FILE_LOCATION = "D:\\Code\\Git\\Main\\alt+u\\counter.txt"
 INDEX_HTML_PATH = "D:\\Code\\Git\\Main\\jslearn\\index.html"
 STYLE_CSS_PATH = "D:\\Code\\Git\\Main\\jslearn\\style.css"
 
-#increment counter by 1 and save it to counter.txt
 def addone():
-    with open(COUNTER_FILE_LOCATION , 'r') as file:
-        counter = file.read()
+    with open(COUNTER_FILE_LOCATION, 'r+') as file:
+        counter = int(file.read())
+        file.seek(0)
+        file.write(str(counter + 1))
+        file.truncate()
+    return str(counter + 1)
 
-    addone = counter.replace(counter, str(int(counter) + 1))
+def main():
+    while True:
+        time.sleep(0.05)
+        if keyboard.is_pressed('alt + u'):
+            counter = addone()
+            path = os.path.join(FOLDER_LOCATION, counter)
+            JS_PATH = os.path.join(path, "app.js")
+            os.mkdir(path)        
+            shutil.copyfile(INDEX_HTML_PATH, os.path.join(path, "index.html"))
+            shutil.copyfile(STYLE_CSS_PATH, os.path.join(path, "style.css"))
+            subprocess.run(["code.cmd", JS_PATH], check=True)
 
-    with open(COUNTER_FILE_LOCATION, 'w') as file:
-        file.write(addone)
-
-#get counter
-with open(COUNTER_FILE_LOCATION, 'r') as file:
-    counter = file.read()
-
-path = os.path.join(FOLDER_LOCATION, counter) + "\\"
-JS_PATH = path + "app.js"
-
-
-while True:
-    time.sleep(0.05)
-    if keyboard.is_pressed('alt + u'):
-        os.mkdir(path)        
-        shutil.copyfile(INDEX_HTML_PATH, (path + "index.html"))
-        shutil.copyfile(STYLE_CSS_PATH, (path + "style.css" ))
-        subprocess.run(["code.cmd", JS_PATH], check=True)
-        addone()
+if __name__ == "__main__":
+    main()
