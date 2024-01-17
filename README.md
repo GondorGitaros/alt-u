@@ -7,3 +7,7 @@ How to use:
 1. Edit the ``` alt+u.py ``` ``` FOLDER_LOCATION ```, ``` COUNTER_FILE_LOCATION ```, ``` INDEX_HTML_PATH ```, ``` STYLE_CSS_PATH ``` to your needs.
 1. run the ``` alt+u.py ```,
 1. Now every time you press ``` alt + u ``` it will create a directory and open it in VS Code.
+
+
+
+Currently only works on windows
